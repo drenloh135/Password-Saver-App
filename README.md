@@ -5,3 +5,4 @@ Future implementations
 1. Automatically send file to email
 2. Password to unlock app and file
 3. Encryption
+4. Implement a GUI
