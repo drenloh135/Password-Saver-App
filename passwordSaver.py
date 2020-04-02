@@ -1,15 +1,17 @@
 import os 
+File = "PasswordSaver.txt" #Target file to be used
+#File = "PasswordSaverReal.txt"
 
-def ShowPassword():
+def ShowPassword(): #Shows a list of passwords stored
     print("Showing you a list of passwords saved ...\n")
     try:
-        with open("PasswordSaver.txt", "r") as f:
+        with open(File, "r") as f:
             for x in f:
                 print(x)
     except FileNotFoundError:
         print("No file created yet. Add password to automatically create file.\n")
 
-def AddPassword():
+def AddPassword(): #Allows user to add info about domain,user and PW. Creates file if it does not exist
     print("What is the domain?")
     domain = input()
     print("What is the user/email you're using?")
@@ -17,22 +19,22 @@ def AddPassword():
     print("What is the password?")
     pw = input()
 
-    with open("PasswordSaver.txt", "a") as f:
+    with open(File, "a") as f:
         
         f.write("Domain: " + domain + '   ')
         f.write("User: " + user + '   ')
-        f.write("Password: " + pw + "\n")
+        f.write("Password: " + pw + "\n\n")
         
         print("Your infomation has been saved! \n")
 
-def ClearFile():
+def ClearFile(): #Completely deletes target file
     print("Are u sure? No going back after this!\n")
     print("1. Yes  2. No\n")
     ans = input()
     try:
         if int(ans) == 1:
             try: 
-                os.remove("PasswordSaver.txt")
+                os.remove(File)
                 print("\nPasswords deleted \n")
             except FileNotFoundError:
                 print("File hasn't beeen created yet \n")
